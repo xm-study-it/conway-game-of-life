@@ -15,9 +15,15 @@ const ROWS = canvas.height / CELL_SIZE
 
 const game = new Conway(ROWS, COLS)
 
+let running = false
+let intervalid = null
+let started = false
+let initialized = false
+
 randomBtn.addEventListener('click', function() {
     game.randomSeed()
     render(ctx, game.world, CELL_SIZE)
+    initialized = true
 })
 
 nextBtn.addEventListener('click', function() {
@@ -26,11 +32,6 @@ nextBtn.addEventListener('click', function() {
 })
 
 const cancelBtn = document.getElementById('cancelBtn')
-
-let running = false
-let intervalid = null
-let started = false
-let initialized = false
 
 autoplayBtn.addEventListener('click', function() {
     if (!started) {
