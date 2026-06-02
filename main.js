@@ -30,11 +30,14 @@ const cancelBtn = document.getElementById('cancelBtn')
 let running = false
 let intervalid = null
 let started = false
+let initialized = false
 
 autoplayBtn.addEventListener('click', function() {
     if (!started) {
-        game.randomSeed()
-        render(ctx, game.world, CELL_SIZE)
+        if (!initialized) {
+            game.randomSeed()
+            render(ctx, game.world, CELL_SIZE)
+        }
         intervalid = setInterval(function() {
             game.next()
             render(ctx, game.world, CELL_SIZE)
