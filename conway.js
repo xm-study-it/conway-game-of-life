@@ -7,6 +7,8 @@ class Conway {
     }
 
     randomSeed(probability = 0.5) {
+        this.world = new Array(this.height).fill(0).map(
+            () => new Array(this.weight).fill(0))
         for (let i = 0; i < this.height; i++) {    
             for (let j = 0; j < this.weight; j++) {
                 if(Math.random() < probability) {
